@@ -37,7 +37,28 @@ section .quote-result{
 .right-quotataion{
     position: absolute;
     right: 2%;
-    top: 80%;
+    top: 70%;
+}
+.copy-icon{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 10px;
+}
+#copy-btn{
+    background-color: rgba(204, 204, 0, 0.2);
+    padding: 5px;
+    margin-top: 10px;
+    outline: none;
+    color: antiquewhite;
+    transition: 0.5s ease-in;
+}
+#copy-btn:hover{
+    transform: scale(1.1);
+}
+#copy-btn i{
+    font-size: 20px;
 }
 section div h4{
     font-size: 14px;
@@ -80,8 +101,14 @@ figcaption{
     .buttons-container{
         margin: 0 auto;
     }
+    .quote{
+        font-size: 14px;
+    }
 }
 @media screen and (min-width: 700px){
+    .quote{
+        font-size: 15px;
+    }
     .buttons-container{
         margin: 0 auto;
     }
@@ -95,11 +122,20 @@ figcaption{
         left: 2%;
         top: 10%;
     }
+    .right-quotataion{
+        top: 60%;
+    }
 
 }
 @media screen and (min-width: 1024px){
     .left-quotataion{
         top: 10%;
+    }
+    .right-quotataion{
+        top: 50%;
+    }
+    .quote{
+        font-size: 16px;
     }
     .buttons-container{
         margin: 0 auto;
