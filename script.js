@@ -403,12 +403,20 @@ randomBtn.addEventListener("click", function() {
 // Copy button functionality
 const quoteText = document.getElementById("quote-text");
 const copyBtn = document.getElementById("copy-btn");
+const copyAlert = document.querySelector('.copy-alert');
+
+function showCopyAlert() {
+    copyAlert.classList.add('show');
+    setTimeout(() => {
+        copyAlert.classList.remove('show');
+    }, 2000);
+}
 
 copyBtn.addEventListener("click", () => {
   navigator.clipboard
     .writeText(quoteText.textContent)
     .then(() => {
-      alert("Quote copied to clipboard!");
+        showCopyAlert();
     })
     .catch((err) => {
       console.error("Failed to copy text: ", err);
