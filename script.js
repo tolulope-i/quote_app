@@ -308,7 +308,6 @@ const smileBtn = document.querySelector(".smile-btn");
 const natureBtn = document.querySelector(".nature-btn");
 
 
-
 // Function to save the quote to local storage
 function saveQuoteToLocalStorage(quoteContent) {
     localStorage.setItem('savedQuote', JSON.stringify(quoteContent));
@@ -335,18 +334,14 @@ function generateRandomQuote(quotesArray) {
     return randomQuote;
 }
 
-// Function to display the quote
 function displayQuote(quoteContent) {
     quote.textContent = quoteContent.quotes;
     author.textContent = quoteContent.author;
     type.textContent = quoteContent.type;
     quoteResult.classList.add("change-color");
 
-    // to save n´quote to local storage
     saveQuoteToLocalStorage(quoteContent);
-
 }
-
 
 
 // Event listeners for each button
@@ -380,12 +375,8 @@ natureBtn.addEventListener("click", function() {
     displayQuote(randomQuote);
 });
 
-
-
-
-// To make the random button generate quotes from any category
+// generating a random quote from each category
 function generateAnyQuote() {
-    // Array containing all quote categories
     const allQuotes = [
         { type: "Motivational Quote", quotes: motivationalQuotes },
         { type: "Inspirational Quote", quotes: inspirationalQuotes },
@@ -394,19 +385,16 @@ function generateAnyQuote() {
         { type: "Nature Quote", quotes: natureQuotes }
     ];
 
-    // Select any category
     const anyCategoryIndex = Math.floor(Math.random() * allQuotes.length);
     const anyCategory = allQuotes[anyCategoryIndex];
 
-    // Select random quote from the any category
     const anyQuoteIndex = Math.floor(Math.random() * anyCategory.quotes.length);
     const anyQuote = anyCategory.quotes[anyQuoteIndex];
-    anyQuote.type = anyCategory.type; // Add type property to the quote object
+    anyQuote.type = anyCategory.type;
 
     return anyQuote;
 }
 
-// Event listener for the random button
 randomBtn.addEventListener("click", function() {
     const anyQuote = generateAnyQuote();
     displayQuote(anyQuote);
@@ -427,7 +415,19 @@ copyBtn.addEventListener("click", () => {
     });
 });
 
-
+// Function to display a default random quote on page load
+function displayDefaultRandomQuote() {
+    const defaultQuote = generateAnyQuote(); 
+    displayQuote(defaultQuote);
+}
+document.addEventListener('DOMContentLoaded', function () {
+    const savedQuote = getQuoteFromLocalStorage();
+    if (savedQuote) {
+        displayQuote(savedQuote);
+    } else {
+        displayDefaultRandomQuote();
+    }
+});
 
 
 // Display the saved quote on page load
